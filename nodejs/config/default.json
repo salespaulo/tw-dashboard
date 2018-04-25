@@ -1,0 +1,20 @@
+{
+    "server": {
+        "name": "tw-dashboard",
+        "version": "1.0.0",
+        "running": true
+    },
+    "jwt": {
+        "header": "Authorization",
+        "secret": "tw-dashboard-changeme-please"
+    },
+    "logger": {
+        "file": {
+            "path": "./tw-dashboard",
+            "level": "debug"
+        },
+        "console": {
+            "level": "debug"
+        }
+    }
+}
