@@ -4,15 +4,32 @@ import React from 'react'
 import { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import Errors from '../../error/errors.component'
 import { signin } from '../'
+
+import Errors from '../../error/errors.component'
+import InputText from '../../shared/form/input/input.component'
+
+import {
+    Card,
+    CardHeader,
+    CardHeaderIcon,
+    CardHeaderTitle,
+    CardImage,
+    CardContent,
+    CardFooter,
+    Container,
+    Content,
+    Image,
+    Icon,
+    Button
+} from 'bloomer'
 
 import './signin.component.css'
 
 const data = {
-    username: '',
-    password: '',
-    remember: false,
+    username: { value: '', error: null },
+    password: { value: '', error: null },
+    isInvalid: true,
     errors: []
 }
 
@@ -22,22 +39,17 @@ class Signin extends Component {
         this.state = data
         this.changeUsername = this.changeUsername.bind(this)
         this.changePassword = this.changePassword.bind(this)
-        this.changeRemember = this.changeRemember.bind(this)
         this.addError = this.addError.bind(this)
         this.clearErrors = this.clearErrors.bind(this)
         this.onSubimit = this.onSubimit.bind(this)
     }
 
-    changeUsername (e) {
-        this.setState({ username: e.target.value })
+    changeUsername(newValue, error) {
+        this.setState({ username: { value: newValue, error: error } })
     }
 
-    changePassword (e) {
-        this.setState({ password: e.target.value })
-    }
-
-    changeRemember(e) {
-        this.setState({ remember: e.target.checked })
+    changePassword (newValue, error) {
+        this.setState({ password: {value: newValue, error: error } })
     }
 
     clearErrors(e) {
@@ -49,7 +61,7 @@ class Signin extends Component {
         this.setState({ errors: errors })
     }
 
-    onSubimit (e) {
+    onSubimit(e) {
         e.preventDefault()
         this.clearErrors()
         signin(this.state)
@@ -57,37 +69,59 @@ class Signin extends Component {
             .catch(err => this.addError(err))
     }
 
+    isInvalid() {
+        const { username, password } = this.state
+        return !username.value 
+                || username.error
+                || !password.value 
+                || password.error
+    }
+
     render() {
         return (
-            <div className="columns" id="login">
-                <div className="column is-7 left">
-                    <h1>
-                        tw-dashboard
-                    </h1>
-                    <h2>
-                        Sua melhor<br />experiência<br />em <strong> Gestão de<br />
-                        Salão de Beleza
-                    </strong>
-                    </h2>
-                </div>
-                <div className="column is-5 right">
-                    <div className="caixaLogin">
+        <Container>
+            <Card className="card-login">
+                <CardHeader>
+                <CardHeaderTitle className="card-header-login">
+                    Login
+                </CardHeaderTitle>
+                <CardHeaderIcon>
+                    <Icon className="fas fa-sign-in-alt" />
+                </CardHeaderIcon>
+                </CardHeader>
+                <CardImage>
+                    <Image className="card-image-logo" />
+                </CardImage>
+                <CardContent>
+                    <Content>
+                        <InputText 
+                            iconClass="fas fa-user" 
+                            placeholder="Email" 
+                            onChange={ this.changeUsername }
+                            className="card-input-field"
+                            email="Email inválido"
+                            />
 
-                        <Errors errors={this.state.errors} onDelete={this.clearErrors} />
-
-                        <form method="post" onSubmit={this.onSubimit}>
-                            <h1>Login</h1>
-                            <input type="text" placeholder="Insira seu Usuário" name="user" value={this.state.username} onChange={this.changeUsername} />
-                            <input type="password" placeholder="Insira sua Senha" name="passwd" value={this.state.password} onChange={this.changePassword} />
-                            <input id="lembrar" type="checkbox" onChange={this.changeRemember} /> Lembrar-me
-                            <button type="submit" className="button">ENTRAR</button>
-                        </form>
-                        <a href="/forgot" className="forget">Esqueceu a senha?</a>
-                        <h2>Não tem uma conta?</h2>
-                        <a href="/signup"> Criar conta </a>
-                    </div>
-                </div>
-            </div>
+                        <InputText 
+                            type="password"
+                            iconClass="fas fa-key" 
+                            placeholder="Senha"
+                            onChange={ this.changePassword }
+                            min="4"
+                            max="10"
+                            maxMsg="Máximo de %{count} caracteres"
+                            minMsg="Mínimo de %{count} caracteres"
+                            />
+                    </Content>
+                </CardContent>
+                <CardFooter>
+                    <Button className="card-footer-button" isColor='primary' disabled={ this.isInvalid() }>Entrar</Button>
+                </CardFooter>
+                <Container isFluid>
+                    <Errors errors={ this.state.errors } onDelete={ this.clearErrors } />
+                </Container>
+            </Card>
+          </Container>
         )
     }
 }
