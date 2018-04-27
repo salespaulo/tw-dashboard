@@ -8,3 +8,13 @@
 {"level":"info","message":"::ffff:127.0.0.1 - - [26/Apr/2018:18:44:05 +0000] \"GET /support/echo/test HTTP/1.1\" 200 17 \"-\" \"node-superagent/2.3.0\"\n","timestamp":"2018-04-26T18:44:05.334Z"}
 {"level":"debug","message":"Server env: { profile: 'development',\n  user: 'paulosales',\n  lang: 'en_US.UTF-8',\n  port: '4000',\n  ip: '172.16.32.204' }","timestamp":"2018-04-26T18:44:40.611Z"}
 {"level":"info","message":"Server listen on 172.16.32.204:4000 start up at 2018-04-26T18:44:40.627Z","timestamp":"2018-04-26T18:44:40.629Z"}
+{"level":"debug","message":"Server env: { profile: 'test',\n  user: 'paulosales',\n  lang: 'en_US.UTF-8',\n  port: '3999',\n  ip: '172.16.32.204' }","timestamp":"2018-04-27T14:22:36.257Z"}
+{"level":"info","message":"Server listen on 172.16.32.204:3999 start up at 2018-04-27T14:22:36.989Z","timestamp":"2018-04-27T14:22:36.992Z"}
+{"level":"debug","message":"Auth filter to path=/support/ping","timestamp":"2018-04-27T14:22:37.046Z"}
+{"level":"debug","message":"Auth filter is unless to req.path=/support/ping","timestamp":"2018-04-27T14:22:37.046Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [27/Apr/2018:14:22:37 +0000] \"GET /support/ping HTTP/1.1\" 200 17 \"-\" \"node-superagent/2.3.0\"\n","timestamp":"2018-04-27T14:22:37.052Z"}
+{"level":"debug","message":"Auth filter to path=/support/echo/test","timestamp":"2018-04-27T14:22:37.062Z"}
+{"level":"debug","message":"Auth filter is unless to req.path=/support/echo/test","timestamp":"2018-04-27T14:22:37.063Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [27/Apr/2018:14:22:37 +0000] \"GET /support/echo/test HTTP/1.1\" 200 17 \"-\" \"node-superagent/2.3.0\"\n","timestamp":"2018-04-27T14:22:37.064Z"}
+{"level":"debug","message":"Server env: { profile: 'development',\n  user: 'paulosales',\n  lang: 'en_US.UTF-8',\n  port: '4000',\n  ip: '172.16.32.204' }","timestamp":"2018-04-27T14:22:38.206Z"}
+{"level":"info","message":"Server listen on 172.16.32.204:4000 start up at 2018-04-27T14:22:38.217Z","timestamp":"2018-04-27T14:22:38.219Z"}
