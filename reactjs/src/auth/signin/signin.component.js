@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { signin } from '../'
 
 import Errors from '../../error/errors.component'
-import InputText from '../../shared/form/input/input.component'
+import Input from '../../shared/form/input/input.component'
 
 import {
     Card,
@@ -17,6 +17,7 @@ import {
     CardImage,
     CardContent,
     CardFooter,
+    Heading,
     Container,
     Content,
     Image,
@@ -79,11 +80,10 @@ class Signin extends Component {
 
     render() {
         return (
-        <Container>
             <Card className="card-login">
                 <CardHeader>
                 <CardHeaderTitle className="card-header-login">
-                    Login
+                    <Heading>Login</Heading>
                 </CardHeaderTitle>
                 <CardHeaderIcon>
                     <Icon className="fas fa-sign-in-alt" />
@@ -94,7 +94,7 @@ class Signin extends Component {
                 </CardImage>
                 <CardContent>
                     <Content>
-                        <InputText 
+                        <Input
                             iconClass="fas fa-user" 
                             placeholder="Email" 
                             onChange={ this.changeUsername }
@@ -102,7 +102,7 @@ class Signin extends Component {
                             email="Email inválido"
                             />
 
-                        <InputText 
+                        <Input
                             type="password"
                             iconClass="fas fa-key" 
                             placeholder="Senha"
@@ -115,13 +115,16 @@ class Signin extends Component {
                     </Content>
                 </CardContent>
                 <CardFooter>
-                    <Button className="card-footer-button" isColor='primary' disabled={ this.isInvalid() }>Entrar</Button>
+                    <Button 
+                        className="card-footer-button" 
+                        isColor='primary' 
+                        disabled={ this.isInvalid() }
+                        onClick={ this.onSubimit }>Entrar</Button>
                 </CardFooter>
                 <Container isFluid>
                     <Errors errors={ this.state.errors } onDelete={ this.clearErrors } />
                 </Container>
             </Card>
-          </Container>
         )
     }
 }

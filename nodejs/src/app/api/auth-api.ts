@@ -19,7 +19,7 @@ const register = (req, res, next) => {
     logger.info('/register', inspect(req.body))
     authService.newUser(name, email, password)
     .then(user => res.json(user))
-    .catch(err =>  sendHttpResponse(err, res, next))
+    .catch(err => sendHttpResponse(err, res, next))
 }
 
 const me = (req, res, next) => {
@@ -40,9 +40,7 @@ const login = (req, res, next) => {
     logger.debug(`Login username=${username} password=${password} tenancyId=${tenancyId}`)
 
     authService.login(username, password, tenancyId)
-    .then(user => {
-        res.json(user)
-    })
+    .then(user => res.json(user))
     .catch(err => sendHttpResponse(err, res, next))
 }
 

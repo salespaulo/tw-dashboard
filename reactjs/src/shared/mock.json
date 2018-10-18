@@ -1,0 +1,23 @@
+[
+    { "method": "GET", "url": "/foo", "code": 200, "response": { "foo": "bar" }},
+    { "method": "GET", "url": "/auth/logout", "code": 200, "response":  "Logout Successfuly!" },
+    { "method": "GET", "url": "/auth/me", "code": 200, "response":  { 
+        "id": "test@test.com", 
+        "name": "Test Test Test It"}},
+    { "method": "POST", "url": "/auth/login", "code": 200, "response": {
+        "_id": "test@test.com",
+        "_rev": "18209381028301823018203981023809",
+        "name": "Test Test Test It",
+        "password": "test",
+        "phoneNumber": "system",
+        "providerId": "system",
+        "firebaseId": "",
+        "photoUrl": "http://www.gravatar.com/avatar/?d=mysteryman&s=50",
+        "profiles": [],
+        "session": {
+            "token": "token test",
+            "score": 0,
+            "logged": true
+        }
+    }}
+]

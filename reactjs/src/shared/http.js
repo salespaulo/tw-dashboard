@@ -1,5 +1,8 @@
 
 import * as axios from 'axios'
+import mock from './mock'
+
+mock(axios)
 
 const TOKEN_HEADER = 'Authorization'
 const NetworkError = Error

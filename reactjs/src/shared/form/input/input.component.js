@@ -38,7 +38,7 @@ class Input extends Component {
     }
 
     validate = (value, props) => {
-        const { required, email, max, min, maxMsg, minMsg } = props
+        const { required, email, url, max, min, maxMsg, minMsg } = props
         let error = { }
         let length = null
 
@@ -52,6 +52,10 @@ class Input extends Component {
 
         if (email) {
             error.email = { message:  email }
+        }
+
+        if (url) {
+            error.url = { message: url }
         }
 
         if (max) {

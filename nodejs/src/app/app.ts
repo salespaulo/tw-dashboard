@@ -2,6 +2,7 @@
 import server from './server'
 import authApi from './api/auth-api'
 import supportApi from './api/support-api'
+import teamworkApi from './api/teamwork-api'
 import { filter } from './api/auth-filter'
 
 import * as path from 'path'
@@ -16,3 +17,4 @@ export default server(express())
     .map(filter)
     .map(supportApi)
     .map(authApi)
+    .map(teamworkApi)

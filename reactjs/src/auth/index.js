@@ -20,6 +20,10 @@ const authenticate = user =>
     option(user)
         .map(u => u.session)
         .map(s => s.token)
+        .map(t => {
+            console.log('>>>>>> token', t)
+            return t
+        })
         .map(t => encode(t))
         .map(t => {
             setToken(t)

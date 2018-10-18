@@ -8,6 +8,7 @@ nodejs/node/
 reactjs/node/
 .project
 .settings/
+package-lock.json
 
 # Logs
 logs

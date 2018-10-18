@@ -9,7 +9,7 @@ import * as authService from '../service/auth-service'
 import { inspect } from '../utils/objects'
 import { sendHttpResponse } from '../utils/errors'
 
-const unless = ['/auth/register', '/auth', '/support']
+const unless = ['/auth/register', '/auth', '/support', '/tw']
 
 const getToken = header => {
     const result = option(header)
